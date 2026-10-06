@@ -6,7 +6,7 @@ export const CHECKS: [string, string][] = [
   ['Identity', 'Signing key bound to Alex'],
   ['Inside mandate', 'Amount, payee and time within limits'],
   ['AML / sanctions', 'Monitoring and screening'],
-  ['FAST · ISO 20022', 'Core banking sends the payment'],
+  ['Payment rail', 'Card or transfer moves the money'],
 ]
 
 export type CheckState = 'pass' | 'ask' | 'wait' | 'fail'
@@ -43,10 +43,10 @@ export const OUTCOMES: Record<string, Outcome> = {
       ...basics('Pip'),
       pass('SGD 480 ≤ 1,000 · Tan Supplies is a known payee'),
       pass('No sanctions hits · no mule signals'),
-      pass('Sent over FAST · pacs.008 message'),
+      pass('Single-use card · Tan Supplies only · SGD 480 cap'),
     ],
-    banner: 'Payment sent. All 6 checks passed.',
-    log: 'Pip → Tan Supplies · SGD 480 sent',
+    banner: 'Card issued and charged. All 6 checks passed.',
+    log: 'Pip → Tan Supplies · SGD 480 paid · card ··2203 closed',
     tone: 'ok',
   },
   tessa: {

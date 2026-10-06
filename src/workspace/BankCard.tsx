@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, IdCard, Zap } from 'lucide-react'
+import { Check, ChevronDown, CreditCard, IdCard, X } from 'lucide-react'
 import PassportCard, { PASSPORT } from '../passport/PassportCard'
 import './cards.css'
 import KairosMark from '../brand/KairosMark'
@@ -29,6 +29,33 @@ export function CheckBar({ passed, label }: { passed: number; label: string }) {
   )
 }
 
+// The approved intent becomes card controls, so the card itself refuses anything else.
+const TRIES: [string, boolean, string][] = [
+  ['SGD 480 · Tan Supplies', true, 'Accepted'],
+  ['SGD 510 · Tan Supplies', false, 'Declined · over limit'],
+  ['SGD 480 · other merchant', false, 'Declined · merchant not allowed'],
+]
+
+function CardControls() {
+  return (
+    <div className="ccontrols">
+      <div className="ccontrols__head">
+        <span>Card ··2203 · single use · SGD 480 cap · Tan Supplies only</span>
+        <span className="ccontrols__tag">Simulated · Airwallex Issuing planned</span>
+      </div>
+      <ul>
+        {TRIES.map(([what, ok, result]) => (
+          <li key={what} className={ok ? 'is-ok' : 'is-bad'}>
+            {ok ? <Check size={13} /> : <X size={13} />}
+            <span className="num">{what}</span>
+            <span className="ccontrols__result">{result}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 // Inline plugin card: the payment the agent is about to make, with the passport it presents.
 export default function BankCard({ checksDone }: { checksDone: number }) {
   const [open, setOpen] = useState(false)
@@ -40,8 +67,8 @@ export default function BankCard({ checksDone }: { checksDone: number }) {
       <div className="bcard__figure">
         <span className="bcard__amount num">SGD 480.00</span>
         <span className="bcard__rail">
-          <Zap size={12} />
-          FAST · ISO 20022
+          <CreditCard size={12} />
+          Intent-bound card
         </span>
       </div>
 
@@ -67,9 +94,11 @@ export default function BankCard({ checksDone }: { checksDone: number }) {
         </div>
       )}
 
+      {checksDone === 6 && <CardControls />}
+
       <CheckBar
         passed={checksDone}
-        label={checksDone === 6 ? 'Sent over FAST' : checksDone > 0 ? `Checking ${checksDone} / 6` : 'Ready for bank checks'}
+        label={checksDone === 6 ? 'Paid · card closed' : checksDone > 0 ? `Checking ${checksDone} / 6` : 'Ready for Kairos checks'}
       />
     </section>
   )

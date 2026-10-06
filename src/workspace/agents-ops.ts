@@ -21,7 +21,12 @@ export const OPS_AGENTS: Agent[] = [
         from: 'agent',
         steps: {
           took: '14s',
-          items: ['Checked stock forecast', 'Compared 3 suppliers you already use', 'Chose Tan Supplies · best delivery slot'],
+          items: [
+            'Checked stock forecast',
+            'Compared 3 suppliers you already use',
+            'Cash stays above the 45-day reserve after paying',
+            'Chose Tan Supplies · best delivery slot',
+          ],
         },
       },
       {
@@ -33,8 +38,8 @@ export const OPS_AGENTS: Agent[] = [
             { who: 'us', text: 'Need 25 kg bread flour and 10 kg butter, delivered by Wednesday.' },
             { who: 'them', text: 'Can do. SGD 510, Wednesday 8am.' },
             { who: 'us', text: 'Our last 3 orders were SGD 470–490. Can you do 480?' },
-            { who: 'them', text: '480 if you pay today over FAST.' },
-            { who: 'us', text: 'Deal. Paying through Kairos now.' },
+            { who: 'them', text: '480 if you pay today.' },
+            { who: 'us', text: 'Deal. Paying with a Kairos card locked to this order.' },
           ],
           outcome: 'Agreed SGD 480 · delivery Wed 8am',
           tone: 'ok',

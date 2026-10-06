@@ -256,3 +256,56 @@
   font-size: 12px;
   color: var(--ink-3);
 }
+
+/* Card controls: the approved intent, enforced by the card rather than the prompt. */
+.ccontrols {
+  margin: 12px 16px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 12px;
+  animation: fade-in 0.3s ease;
+}
+
+.ccontrols__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 8px;
+  margin-bottom: 6px;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.ccontrols__tag {
+  color: var(--kairos-gold);
+  font-weight: 600;
+}
+
+.ccontrols ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ccontrols li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ccontrols .is-ok svg {
+  color: var(--ok);
+}
+
+.ccontrols .is-bad svg,
+.ccontrols .is-bad .ccontrols__result {
+  color: var(--warn);
+}
+
+.ccontrols__result {
+  margin-left: auto;
+  color: var(--ok);
+}
