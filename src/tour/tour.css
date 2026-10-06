@@ -1,0 +1,138 @@
+.tour {
+  position: fixed;
+  z-index: 40;
+  bottom: 16px;
+  left: 16px;
+  width: 300px;
+  padding: 14px 16px 12px;
+  border-radius: var(--radius-lg);
+  background: var(--kairos-navy);
+  color: #faf9f5;
+  box-shadow: var(--shadow-lg);
+  animation: fade-in 0.3s ease;
+}
+
+.tour__stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 28px 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tour__stages button {
+  padding: 2px 8px;
+  border: 1px solid rgba(250, 249, 245, 0.18);
+  border-radius: 999px;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(250, 249, 245, 0.55);
+}
+
+.tour__stages .is-done button {
+  color: rgba(250, 249, 245, 0.85);
+}
+
+.tour__stages .is-on button {
+  border-color: var(--kairos-gold);
+  color: var(--kairos-gold);
+}
+
+.tour__title {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tour__text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(250, 249, 245, 0.78);
+}
+
+.tour__foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.tour__count {
+  margin-right: auto;
+  font-size: 12px;
+  color: rgba(250, 249, 245, 0.5);
+}
+
+.tour__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid rgba(250, 249, 245, 0.2);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: #faf9f5;
+  font-size: 13px;
+}
+
+.tour__btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.tour__btn--primary {
+  border-color: #faf9f5;
+  background: #faf9f5;
+  color: var(--kairos-navy);
+  font-weight: 600;
+}
+
+.tour__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: rgba(250, 249, 245, 0.6);
+}
+
+.tour__close:hover {
+  background: rgba(250, 249, 245, 0.1);
+  color: #faf9f5;
+}
+
+.tour-reopen {
+  position: fixed;
+  z-index: 40;
+  bottom: 72px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--kairos-navy);
+  color: #faf9f5;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+}
+
+/* The element the current step is about. */
+.tour-focus {
+  outline: 2px solid var(--kairos-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+  transition: outline-color 0.2s ease;
+}
+
+@media (max-width: 720px) {
+  .tour {
+    right: 16px;
+    width: auto;
+  }
+}

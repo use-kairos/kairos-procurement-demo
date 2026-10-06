@@ -143,7 +143,7 @@ export default function BankView({ agent, run, log, onRun, onOpenSigner, onOpenP
         </section>
       </div>
 
-      <footer className="bv-foot">Signatures are quantum-safe (ML-DSA-65)</footer>
+      <footer className="bv-foot">Concept demo · checks, signatures (ML-DSA-65 planned) and payments are simulated</footer>
     </aside>
   )
 }

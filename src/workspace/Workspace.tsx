@@ -10,6 +10,7 @@ import { OUTCOMES } from './checks'
 import { AGENTS } from './agents'
 import { useChecks } from './useChecks'
 import SetupChat from '../setup/SetupChat'
+import Tour from '../tour/Tour'
 import type { CompanyId } from './companies'
 import './layout.css'
 
@@ -98,6 +99,7 @@ export default function Workspace() {
           onClose={() => setPassportOpen(false)}
         />
       )}
+      {!chatOnly && <Tour />}
       {signer && OUTCOMES[signer].approve && (
         <SignerOverlay
           key={signer}
