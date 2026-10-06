@@ -22,4 +22,4 @@ Kairos gives every agent a **passport** that its owner signs: roles, limits, all
 
 **Demo:** [PREVIEW URL]. Concept demo: payments, cards, signatures and bank checks are simulated in the browser. No Airwallex integration exists yet.
 
-**Prior work (disclosed).** The demo builds on *Banking 2035*, a concept demo I built in September 2026 for a Granite Fellows group proposal in Singapore (https://banking-2035-demo.vercel.app/). For this application I rebranded it to Kairos and added the agent-to-agent verification, the intent-bound card scene and a guided walkthrough. Change history is in the repository. The Airwallex integration is the work we propose for the build phase.
+**Prior work (disclosed).** The demo builds on *Banking 2035*, a concept demo I built in September 2026 for my Granite Fellows group’s Banking 2035 proposal in Singapore (https://banking-2035-demo.vercel.app/). For this application I rebranded it to Kairos and added the agent-to-agent verification, the intent-bound card scene and a guided walkthrough. Change history is in the repository. The Airwallex integration is the work we propose for the build phase.
