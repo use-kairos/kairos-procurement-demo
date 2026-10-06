@@ -1,84 +1,43 @@
-# Kairos Procurement Demo
+# Kairos · Agent Passport Demo
 
-**Approved. Resumable. Verifiable.**
+**Kairos is the transaction layer for AI agents:** intent → plan → approval → action → proof.
 
-An interactive idea-stage prototype for [Airwallex Agentic Banking Hackathon](https://airwallex.hackerearth.com/) Starter Kit 02: Intent-Bound Purchase Agent. Kairos is the transaction layer for AI agents.
+An idea-stage concept demo for the [Airwallex Agentic Banking Hackathon](https://airwallex.hackerearth.com/), built on the pre-existing Banking 2035 demo (see [Provenance](#provenance)). Procurement (Starter Kit 02, Intent-Bound Purchase Agent) is one scene in it, not the whole product.
 
-> Browser-only simulation. No real payments, bank connection, card issuance or LLM calls. Do not enter credentials or real financial data.
+> Concept demo. Every payment, card, signature, identity check and bank check is simulated in the browser. No real money moves, nothing is connected to Airwallex yet, and there is no backend.
 
-## Run locally
+## What you see
 
-Node.js 22 recommended.
+1. **3D intro.** A desk with a laptop and a signing key. After one second the camera moves into the screen on its own.
+2. **Workspace.** Alex runs Lim Bakery with six agents. Each agent acts inside a signed **agent passport** (a mandate: amounts, payees, what needs Alex).
+3. **Agent to agent.** Agents negotiate with other companies' agents. Before any deal Kairos answers three questions: *who is acting, under what authority, and is it backed by real money?* An agent without a passport is refused.
+4. **Approval.** Anything outside a passport stops for Alex's signing key (Wren, Otto, Tessa).
+5. **Action.** Pip pays with a single-use card bound to the approved intent. The card, not the prompt, declines anything else.
+6. **Proof.** Six checks and a hash-chained audit log in the Kairos view.
+
+A first-visit guide walks through these steps. [docs/demo-guide.md](docs/demo-guide.md) has a 3-minute script.
+
+## Run
 
 ```sh
 npm ci
-npm run dev
-```
-
-Open the local URL printed by Vite. Production build and policy/recovery checks:
-
-```sh
-npm test
+npm run dev      # add ?skip to jump past the intro
 npm run build
-npm run preview
 ```
 
-## Deploy to Vercel
+Static Vite + React + three.js app. Vercel: framework Vite, output `dist`, no environment variables.
 
-Import **use-kairos/kairos-procurement-demo**, branch **main**.
+## Implemented vs simulated vs planned
 
-| Setting | Value |
+| | Status |
 | --- | --- |
-| Framework preset | Vite |
-| Root directory | Repository root (`./`) |
-| Install command | `npm ci` |
-| Build command | `npm run build` |
-| Output directory | `dist` |
-| Node.js | 22.x |
-| Environment variables | None |
-
-There is no backend, secret or database to configure. This repository does not deploy automatically to Vercel; the owner will create the Vercel project.
-
-## The decision
-
-The team has $1,400 in cash, owes $650 in payroll and requires a $400 reserve. A fictional LedgerFlow subscription costs $100 monthly or $984 annually. Annual billing saves 18%, but leaves −$234 after payroll. Monthly billing leaves $650.
-
-The owner approves one purchase from LedgerFlow for USD 100 on monthly terms, valid for five minutes. This is not approval for automatic recurring charges.
-
-```mermaid
-flowchart LR
-  A[Purchase intent] --> B[Compare terms and reserve]
-  B --> C[Exact owner approval]
-  C --> D{Current terms match?}
-  D -->|No| E[Stop for a new review]
-  D -->|Yes| F[Simulated payment]
-  F --> G[Reconcile by request ID]
-  G --> H[Evidence record]
-```
-
-## Try the scenarios
-
-Select a scenario before approving; Reset starts a new independent simulation.
-
-| Scenario | Expected result |
-| --- | --- |
-| Approved purchase | One simulated payment and a receipt. Replay returns that same payment. |
-| Price changes | $110 request differs from the $100 mandate; zero charges. |
-| Supplier changes | Unknown reseller differs from approved supplier; zero charges. |
-| Interrupted response | A simulated provider record exists before receipt capture. Reload and resume reconcile it without another charge. |
-
-Download the JSON evidence to inspect approved terms, events and payment count. Browser storage preserves the current simulation across reloads on the same origin. Reset erases that simulation. The event log is not signed or tamper-resistant.
-
-## Existing implementation vs proposed build
-
-**Implemented:** deterministic policy decisions, approval expiry and exact-term checks, single-request recovery simulation, responsive UI, browser persistence, JSON evidence export, executable tests.
-
-**Proposed hackathon work:** server-side authorization and durable state, Airwallex sandbox balances and virtual cards, supported card spending controls, sandbox charge simulations and reconciliation using actual provider identifiers. Exact supplier/billing-term enforcement requires application checks unless verified provider capabilities support it. The frontend is not a trusted authorization boundary. No production reliability or cryptographic guarantee is claimed.
-
-See [architecture and integration plan](docs/architecture.md) and [copy-ready Idea submission](docs/idea-submission.md).
+| 3D intro, workspace, agent threads, passport editor, signing-key overlay, plugin onboarding chat | Implemented (front end) |
+| Agent conversations, the three-question checks, six Kairos checks, audit log hashes | Scripted / simulated |
+| ML-DSA-65 signatures, Singpass liveness, AML screening, bank rails | Concept only, not implemented |
+| Intent-bound virtual card and its authorization tests | Simulated; planned on Airwallex Issuing (cardholder, card with limits and merchant controls, simulated authorizations) |
 
 ## Provenance
 
-This is a separate public repository, with no private source history or configuration. It adapts the agent workspace presentation and Avatar component from the pre-existing [Banking 2035 demo](https://banking-2035-demo.vercel.app/), developed for Granite Fellows Group 9 in Singapore. The new procurement scenario and simulation are pre-event concept preparation, not official build-period work. See [NOTICE](NOTICE.md) for asset attribution and source commit.
+The code is ported unchanged from the private repository `onehumanbeing/banking-2035-demo` at commit `e7908a0` (Banking 2035, Granite Fellows Group 9, Singapore, September 2026; live at https://banking-2035-demo.vercel.app/). Every Kairos change is a separate commit after that baseline. [docs/changes-from-banking-2035.md](docs/changes-from-banking-2035.md) lists them. Asset credits are in [NOTICE.md](NOTICE.md).
 
-Code is MIT licensed. Kairos names and brand artwork are excluded from that license. Third-party assets retain their own terms.
+Code is MIT licensed. Kairos names and brand artwork are excluded from that license. Third-party assets keep their own terms.
