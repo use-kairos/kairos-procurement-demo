@@ -1,0 +1,40 @@
+/* App frame: flat sidebar on the canvas, floating conversation and bank panels. */
+.ws {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 8px;
+  height: 100vh;
+  padding: 8px;
+  animation: fade-in 0.4s ease;
+}
+
+.ws--bank {
+  grid-template-columns: 280px minmax(0, 1fr) 380px;
+}
+
+.panel {
+  min-height: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+@media (max-width: 1180px) {
+  .ws--bank {
+    grid-template-columns: 240px minmax(0, 1fr) 340px;
+  }
+}
+
+@media (max-width: 960px) {
+  .ws,
+  .ws--bank {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar,
+  .bank-view {
+    display: none;
+  }
+}

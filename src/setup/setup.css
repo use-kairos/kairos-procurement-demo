@@ -1,0 +1,154 @@
+/* Chat-only onboarding (Lim Ventures) */
+.assistant-mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.assistant-mark--lg {
+  width: 30px;
+  height: 30px;
+}
+
+.assistant-mark--xl {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto;
+  border-radius: 20px;
+  font-size: 32px;
+}
+
+.setup-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 560px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-shadow: var(--shadow-sm);
+}
+
+.setup-card__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.setup-steps {
+  margin: 0;
+}
+
+.setup-muted {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.setup-detect {
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+
+.setup-detect img {
+  width: 40px;
+  height: 40px;
+}
+
+.setup-detect > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.setup-detect strong {
+  font-size: 16px;
+}
+
+.setup-also {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.setup-also img {
+  width: 18px;
+  height: 18px;
+}
+
+.setup-chip {
+  padding: 1px 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+
+.setup-auth__head {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.setup-auth ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.setup-auth .btn-primary {
+  align-self: flex-start;
+}
+
+.setup-auth .btn-primary:disabled {
+  opacity: 0.5;
+}
+
+.setup-ok {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ok);
+}
+
+.setup-retry {
+  margin-top: 8px;
+}
+
+.setup-suggest {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  align-self: flex-start;
+  margin-bottom: 8px;
+  padding: 7px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.setup-suggest:hover {
+  background: var(--bg-hover);
+}

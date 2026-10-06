@@ -1,0 +1,9 @@
+.kairos-mark {
+  display: block;
+}
+
+/* Tiles that used to hold a dark shield: the mark needs a light surface. */
+.has-kairos-mark {
+  background: #fff !important;
+  box-shadow: inset 0 0 0 1px var(--line);
+}

@@ -1,0 +1,204 @@
+.hs {
+  width: 520px;
+  max-width: 100%;
+  margin-top: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.hs--warn {
+  border-color: #f5c2c2;
+}
+
+.hs__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-subtle);
+}
+
+.hs__pair {
+  display: flex;
+}
+
+.hs__pair .avatar-wrap + .avatar-wrap {
+  margin-left: -8px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--bg-subtle);
+}
+
+.hs__who {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.hs__names {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hs__names svg {
+  color: var(--ink-3);
+}
+
+.hs__org {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.hs__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--ok-soft);
+  color: var(--ok);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hs__badge.is-bad {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+/* Agent-to-agent lines: theirs on the left, ours on the right */
+.hs__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 14px;
+  list-style: none;
+}
+
+.hs__line {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  max-width: 85%;
+}
+
+.hs__line--us {
+  align-self: flex-end;
+}
+
+.hs__bubble {
+  padding: 7px 12px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.hs__line--them .hs__bubble {
+  border-bottom-left-radius: 4px;
+  background: var(--bg-sunken);
+}
+
+.hs__line--us .hs__bubble {
+  border-bottom-right-radius: 4px;
+  background: #e9e6df;
+}
+
+.hs__foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.hs__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink-4);
+}
+
+.hs--ok .hs__dot {
+  background: var(--ok);
+}
+
+.hs--wait .hs__dot {
+  background: var(--wait);
+}
+
+.hs--ask .hs__dot {
+  background: var(--ask);
+}
+
+.hs--warn .hs__dot {
+  background: var(--warn);
+}
+
+.hs__line {
+  animation: fade-in 0.3s ease both;
+}
+
+/* Kairos' three questions about the other agent, answered before the conversation. */
+.hs__verify {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.hs__verify li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.hs__verify li + li {
+  border-left: 1px solid var(--line);
+}
+
+.hs__verify-q {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.hs__verify .is-ok .hs__verify-q svg {
+  color: var(--ok);
+}
+
+.hs__verify .is-bad .hs__verify-q svg,
+.hs__verify .is-bad .hs__verify-a {
+  color: var(--warn);
+}
+
+.hs__verify-a {
+  color: var(--ink-3);
+}
+
+@media (max-width: 640px) {
+  .hs__verify {
+    grid-template-columns: 1fr;
+  }
+
+  .hs__verify li + li {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}

@@ -1,0 +1,311 @@
+.bcard {
+  width: 420px;
+  max-width: 100%;
+  margin-top: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.bcard--ask {
+  border-color: #bfd4fb;
+}
+
+.bcard--warn {
+  border-color: #f5c2c2;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-subtle);
+}
+
+.bank-mark {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.card-head__title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.card-head__by {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.bcard__figure {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 0;
+}
+
+.bcard__amount {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.bcard__figure-label {
+  padding: 0 16px;
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.bcard__rail {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--bg-sunken);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.tone-pill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tone-pill--ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+.tone-pill--wait {
+  background: var(--wait-soft);
+  color: var(--wait);
+}
+
+.tone-pill--ask {
+  background: var(--ask-soft);
+  color: var(--ask);
+}
+
+.tone-pill--warn {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+/* Payee */
+.payee {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 16px 0;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+}
+
+.payee__mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e7e2d8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.payee__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+
+.payee__name {
+  font-weight: 500;
+}
+
+.payee__sub {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+/* Collapsible passport */
+.passport-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: calc(100% - 32px);
+  margin: 10px 16px 0;
+  padding: 9px 12px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  font-size: 13px;
+  text-align: left;
+  color: var(--ink-2);
+}
+
+.passport-row:hover {
+  background: var(--bg-subtle);
+}
+
+.passport-row__text {
+  flex: 1;
+  font-weight: 500;
+}
+
+.passport-row__sig {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ok);
+}
+
+.passport-row__chev {
+  color: var(--ink-3);
+  transition: transform 0.15s ease;
+}
+
+.passport-row.is-open .passport-row__chev {
+  transform: rotate(180deg);
+}
+
+.bcard__passport {
+  margin: 8px 16px 0;
+  animation: fade-in 0.2s ease;
+}
+
+/* Rows + note */
+.bcard__rows {
+  margin: 12px 16px 0;
+  padding: 0;
+}
+
+.bcard__rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.bcard__rows dt {
+  color: var(--ink-3);
+}
+
+.bcard__rows dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+}
+
+.bcard__note {
+  margin: 4px 16px 0;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--bg-subtle);
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.bcard > :last-child:not(.card-foot) {
+  margin-bottom: 16px;
+}
+
+/* Check progress */
+.card-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 11px 16px;
+  border-top: 1px solid var(--line);
+}
+
+.checkbar {
+  display: flex;
+  gap: 3px;
+}
+
+.checkbar span {
+  width: 18px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--line-strong);
+}
+
+.checkbar span.is-done {
+  background: var(--ok);
+}
+
+.card-foot__label {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+/* Card controls: the approved intent, enforced by the card rather than the prompt. */
+.ccontrols {
+  margin: 12px 16px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 12px;
+  animation: fade-in 0.3s ease;
+}
+
+.ccontrols__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 8px;
+  margin-bottom: 6px;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.ccontrols__tag {
+  color: var(--kairos-gold);
+  font-weight: 600;
+}
+
+.ccontrols ul {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ccontrols li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ccontrols .is-ok svg {
+  color: var(--ok);
+}
+
+.ccontrols .is-bad svg,
+.ccontrols .is-bad .ccontrols__result {
+  color: var(--warn);
+}
+
+.ccontrols__result {
+  margin-left: auto;
+  color: var(--ok);
+}
