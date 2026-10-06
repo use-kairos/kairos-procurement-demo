@@ -55,7 +55,7 @@ export default function SigningDevice({ mode, onClick, onHover }: Props) {
 
         {mode === 'overview' && (
           <Html position={[0, 0.05, 0.72]} center zIndexRange={[10, 0]}>
-            <div className="chip-tag">Bank signing key</div>
+            <div className="chip-tag">Signing key</div>
           </Html>
         )}
       </group>

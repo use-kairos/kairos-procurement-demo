@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import AgentThread from './AgentThread'
 import BankView from './BankView'
@@ -18,7 +18,12 @@ type View = 'thread' | 'settings' | 'plugin'
 
 export default function Workspace() {
   const [selected, setSelected] = useState(AGENTS[0].id)
+  // The first thread plays itself once on arrival, like the Replay button.
+  const [autoplay, setAutoplay] = useState(true)
   const [view, setView] = useState<View>('thread')
+  useEffect(() => {
+    if (view !== 'thread') setAutoplay(false)
+  }, [view])
   const [bankOpen, setBankOpen] = useState(true)
   const [passportOpen, setPassportOpen] = useState(false)
   const [company, setCompany] = useState<CompanyId>('bakery')
@@ -33,6 +38,7 @@ export default function Workspace() {
   const select = (id: string) => {
     setSelected(id)
     setView('thread')
+    setAutoplay(false)
   }
 
   const savePolicy = (p: Policy) => {
@@ -72,6 +78,7 @@ export default function Workspace() {
           <AgentThread
             key={agent.id}
             agent={agent}
+            autoplay={autoplay}
             checksDone={runs[agent.id]?.done ?? 0}
             decision={runs[agent.id]?.decision}
             bankOpen={bankOpen}

@@ -9,7 +9,7 @@ import type { Decision } from './checks'
 import { liveStatus } from './status'
 import './thread.css'
 
-type Props = { agent: Agent; checksDone: number; decision?: Decision; bankOpen: boolean; onToggleBank: () => void; onOpenSettings: () => void }
+type Props = { agent: Agent; autoplay?: boolean; checksDone: number; decision?: Decision; bankOpen: boolean; onToggleBank: () => void; onOpenSettings: () => void }
 
 function Actions() {
   return (
@@ -71,7 +71,7 @@ function Body({ m, agent, checksDone, decision, lines }: BodyProps) {
   )
 }
 
-export default function AgentThread({ agent, checksDone, decision, bankOpen, onToggleBank, onOpenSettings }: Props) {
+export default function AgentThread({ agent, autoplay, checksDone, decision, bankOpen, onToggleBank, onOpenSettings }: Props) {
   const live = liveStatus(agent, decision ? { done: 0, running: false, decision } : undefined)
   const working = decision === 'approved' ? 'wrapping up' : decision === 'rejected' ? 'standing down' : agent.working
   const scroll = useRef<HTMLDivElement>(null)
@@ -79,7 +79,7 @@ export default function AgentThread({ agent, checksDone, decision, bankOpen, onT
   // Replay: every message is one step; agent-to-agent chats reveal one line per step.
   const steps = useMemo(() => agent.messages.map((m) => ('a2a' in m ? m.a2a.lines.length : 1)), [agent])
   const total = steps.reduce((a, b) => a + b, 0)
-  const [shown, setShown] = useState(total)
+  const [shown, setShown] = useState(autoplay ? 0 : total)
   const playing = shown < total
 
   useEffect(() => {
