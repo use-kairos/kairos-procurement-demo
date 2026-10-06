@@ -8,13 +8,14 @@ import SigningDevice from './SigningDevice'
 import { CAMERA, type CameraMode } from './layout'
 import './intro.css'
 
+const AUTOPLAY_MS = 1000
 const ENTER_DELAY_MS = 1100
 const FADE_MS = 500
 
 const HINTS: Record<CameraMode, string> = {
-  overview: 'Click the signing key to see the agent passport  ·  Click the screen to open Cowork',
+  overview: 'Intent → Plan → Approval → Action → Proof',
   device: 'Click anywhere to go back',
-  screen: '',
+  screen: 'Intent → Plan → Approval → Action → Proof',
 }
 
 export default function IntroScene({ onEnter }: { onEnter: () => void }) {
@@ -28,6 +29,12 @@ export default function IntroScene({ onEnter }: { onEnter: () => void }) {
       document.body.style.cursor = 'auto'
     }
   }, [hovering, mode])
+
+  // Judges should not need to discover the interaction: push into the screen on its own.
+  useEffect(() => {
+    const t = setTimeout(() => setMode((m) => (m === 'overview' ? 'screen' : m)), AUTOPLAY_MS)
+    return () => clearTimeout(t)
+  }, [])
 
   useEffect(() => {
     if (mode !== 'screen') return
@@ -81,8 +88,8 @@ export default function IntroScene({ onEnter }: { onEnter: () => void }) {
         <CameraRig mode={mode} />
       </Canvas>
 
-      <header className={`intro__title${mode !== 'overview' ? ' is-hidden' : ''}`}>
-        <span className="intro__kicker">Banking 2035</span>
+      <header className={`intro__title${mode === 'device' ? ' is-hidden' : ''}`}>
+        <span className="intro__kicker">Kairos · the transaction layer for AI agents</span>
         <span>Every agent carries a passport.</span>
       </header>
       {HINTS[mode] && <p className="intro__hint">{HINTS[mode]}</p>}
