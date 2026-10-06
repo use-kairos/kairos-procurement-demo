@@ -118,11 +118,11 @@ export function screenTexture() {
   ctx.roundRect(330, H - 110, 620, 60, 20)
   ctx.stroke()
 
-  // Bank's view panel: six checks.
+  // Kairos view panel: six checks.
   panel(1004, 12, 364, H - 24)
   ctx.fillStyle = '#0e0e10'
   ctx.font = `600 24px ${UI_FONT}`
-  ctx.fillText("Bank's view", 1030, 56)
+  ctx.fillText('Kairos view', 1030, 56)
   ctx.fillStyle = '#f8f8f6'
   roundRect(ctx, 1026, 90, 320, 110, 14)
   for (let i = 0; i < 6; i++) {
@@ -151,7 +151,7 @@ export function deviceScreenTexture() {
   ctx.textBaseline = 'alphabetic'
   ctx.fillStyle = 'rgba(255,255,255,0.6)'
   ctx.font = `600 21px ${UI_FONT}`
-  ctx.fillText('Certainty Bank', 32, 50)
+  ctx.fillText('Kairos', 32, 50)
   ctx.fillStyle = '#4ade80'
   ctx.beginPath()
   ctx.arc(W - 118, 43, 6, 0, Math.PI * 2)

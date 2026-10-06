@@ -1,8 +1,8 @@
 import { PLATFORMS } from '../plugin/platforms'
 import type { Approval } from '../workspace/checks'
 
-// Scripted onboarding for Lim Ventures: install the Certainty Bank plugin from a chat.
-export const DOMAIN = 'certaintybank.ai'
+// Scripted onboarding for Lim Ventures: install the Kairos plugin from a chat.
+export const DOMAIN = 'hikairos.app'
 export const PROMPT = `Install ${DOMAIN} and set up the plugin for me.`
 
 export const DETECTED = { name: 'Claude Code', logo: '/logos/claude.svg', detail: 'MCP plugins supported · running on this Mac' }
@@ -11,8 +11,8 @@ export const ALSO = PLATFORMS.filter((p) => ['ChatGPT', 'Gemini', 'Manus', 'Open
 export const DETECT_STEPS = [
   'Checked your agent framework',
   `Fetched ${DOMAIN}/.well-known/mcp.json`,
-  'Publisher verified: Certainty Bank · signed ML-DSA-65',
-  'Installed Certainty Bank plugin v1.0',
+  'Publisher verified: Kairos · signed ML-DSA-65',
+  'Installed Kairos plugin v1.0',
 ]
 
 export const SCOPES = [

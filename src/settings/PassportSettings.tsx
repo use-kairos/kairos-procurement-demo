@@ -78,7 +78,7 @@ export default function PassportSettings({ agent, policy, onSave, onBack }: Prop
             <Avatar id={agent.id} color={agent.color} size={48} />
             <div>
               <h2>{agent.name}'s passport</h2>
-              <p>What {agent.name} may do through Certainty Bank. Every change is signed with your key.</p>
+              <p>What {agent.name} may do through Kairos. Every change is signed with your key.</p>
             </div>
           </div>
 
@@ -221,7 +221,7 @@ export default function PassportSettings({ agent, policy, onSave, onBack }: Prop
       <footer className="settings__foot">
         {outcome === 'approved' && !dirty ? (
           <span className="settings__signed">
-            <CheckCircle2 size={15} /> Passport v{p.version} signed on your key and sent to Certainty Bank
+            <CheckCircle2 size={15} /> Passport v{p.version} signed on your key and sent to Kairos
           </span>
         ) : outcome === 'rejected' ? (
           <span className="settings__rejected">

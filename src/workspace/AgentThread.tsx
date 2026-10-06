@@ -129,7 +129,7 @@ export default function AgentThread({ agent, checksDone, decision, bankOpen, onT
             className={`icon-btn${bankOpen ? ' is-on' : ''}`}
             onClick={onToggleBank}
             aria-label="Toggle bank's view"
-            title="Bank's view"
+            title="Kairos view"
           >
             <PanelRight size={16} />
           </button>

@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Check, ChevronsUpDown, ListFilter, MessageSquare, Plus, Search, ShieldCheck } from 'lucide-react'
+import { Check, ChevronsUpDown, ListFilter, MessageSquare, Plus, Search } from 'lucide-react'
 import Avatar from './Avatar'
 import { AGENTS } from './agents'
 import { FILTERS, liveStatus, type Filter } from './status'
 import type { Run } from './useChecks'
 import { COMPANIES, type CompanyId } from './companies'
 import './sidebar.css'
+import KairosMark from '../brand/KairosMark'
 
 type Props = {
   selected: string
@@ -109,7 +110,7 @@ export default function Sidebar({ selected, onSelect, pluginOpen, onOpenPlugin, 
                 <span className="agent-row__name">Chat</span>
               </span>
               <span className="agent-row__bottom">
-                <span className="agent-row__doing">{connected ? 'Certainty Bank connected' : 'No agents yet'}</span>
+                <span className="agent-row__doing">{connected ? 'Kairos connected' : 'No agents yet'}</span>
               </span>
             </span>
           </button>
@@ -147,11 +148,11 @@ export default function Sidebar({ selected, onSelect, pluginOpen, onOpenPlugin, 
         <div className="agent-empty">Nothing connected yet</div>
       ) : (
       <button className={`plugin-row${pluginOpen ? ' is-active' : ''}`} onClick={onOpenPlugin}>
-        <span className="plugin-row__mark">
-          <ShieldCheck size={15} />
+        <span className="plugin-row__mark has-kairos-mark">
+          <KairosMark size={24} />
         </span>
         <span className="plugin-row__text">
-          <span className="plugin-row__name">Certainty Bank</span>
+          <span className="plugin-row__name">Kairos</span>
           <span className="plugin-row__sub">Payments · credit</span>
         </span>
         <span className="plugin-row__badge">Verified</span>

@@ -25,7 +25,7 @@ export default function PassportCard({ compact = false }: Props) {
     <div className={`passport${compact ? ' passport--compact' : ''}`}>
       <div className="passport__head">
         <span className="passport__kicker">Agent passport</span>
-        <span className="passport__issuer">Issued by Certainty Bank</span>
+        <span className="passport__issuer">Issued by Kairos</span>
       </div>
       <dl className="passport__rows">
         {rows.map(([k, v]) => (

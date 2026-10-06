@@ -39,8 +39,8 @@ export default function BankView({ agent, run, log, onRun, onOpenSigner, onOpenP
           <ShieldCheck size={15} />
         </button>
         <div className="bv-head__text">
-          <span className="bv-head__title">Bank's view</span>
-          <span className="bv-head__sub">Certainty Bank trust layer</span>
+          <span className="bv-head__title">Kairos view</span>
+          <span className="bv-head__sub">Kairos · checks before money moves</span>
         </div>
         <span className="bv-live">
           <span />
@@ -131,7 +131,7 @@ export default function BankView({ agent, run, log, onRun, onOpenSigner, onOpenP
                     <div className="bv-entry__text">{rest.join(' · ')}</div>
                     <div className="bv-entry__meta">
                       {byAlex ? <KeyRound size={11} /> : <ShieldCheck size={11} />}
-                      Signed by {byAlex ? "Alex's key" : 'Certainty Bank'}
+                      Signed by {byAlex ? "Alex's key" : 'Kairos'}
                       <span className="bv-entry__sep">·</span>#{String(e.id).padStart(4, '0')}
                       {prev ? ` links to #${String(prev.id).padStart(4, '0')}` : ' first today'}
                     </div>

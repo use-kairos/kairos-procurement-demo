@@ -5,7 +5,10 @@
   --bg-subtle: #f8f8f6;
   --bg-sunken: #f1f1ee;
   --bg-hover: #ebebe7;
-  --ink: #0e0e10;
+  /* Kairos brand: navy ink, mineral gold for the one resolved moment. */
+  --kairos-navy: #061e33;
+  --kairos-gold: #bf9957;
+  --ink: var(--kairos-navy);
   --ink-2: #45454a;
   --ink-3: #85858b;
   --ink-4: #b4b4b8;

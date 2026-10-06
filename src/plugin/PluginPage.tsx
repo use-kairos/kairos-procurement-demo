@@ -1,6 +1,7 @@
-import { ArrowLeft, FileSignature, IdCard, KeyRound, Network, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, FileSignature, IdCard, KeyRound, Network } from 'lucide-react'
 import { PLATFORMS, STANDARDS } from './platforms'
 import './plugin.css'
+import KairosMark from '../brand/KairosMark'
 
 const GIVES = [
   { icon: IdCard, title: 'Passport', text: 'Bank-signed limits: which accounts, how much, which payees, until when.' },
@@ -10,7 +11,7 @@ const GIVES = [
 ]
 
 // Tiny hand-rolled highlighter for the JSON snippet.
-export function Code({ url = 'https://agents.certaintybank.example/mcp', passport = 'psp_pip_v3_7Q2L…' }: { url?: string; passport?: string }) {
+export function Code({ url = 'https://hikairos.app/mcp', passport = 'psp_pip_v3_7Q2L…' }: { url?: string; passport?: string }) {
   const k = (s: string) => <span className="tok-key">{s}</span>
   const v = (s: string) => <span className="tok-str">{s}</span>
   return (
@@ -19,7 +20,7 @@ export function Code({ url = 'https://agents.certaintybank.example/mcp', passpor
         {'{\n  '}
         {k('"mcpServers"')}
         {': {\n    '}
-        {k('"certainty-bank"')}
+        {k('"kairos"')}
         {': {\n      '}
         {k('"url"')}: {v(`"${url}"`)}
         {',\n      '}
@@ -43,15 +44,15 @@ export default function PluginPage({ onBack }: { onBack: () => void }) {
         </button>
         <div className="topbar__who">
           <span className="topbar__name">Plugins</span>
-          <span className="topbar__role">Certainty Bank</span>
+          <span className="topbar__role">Kairos</span>
         </div>
       </header>
 
       <div className="plugin__scroll">
         <div className="plugin__col">
           <section className="p-hero">
-            <span className="p-hero__mark">
-              <ShieldCheck size={30} />
+            <span className="p-hero__mark has-kairos-mark">
+              <KairosMark size={56} />
             </span>
             <div className="p-hero__text">
               <div className="p-hero__badges">
@@ -59,7 +60,7 @@ export default function PluginPage({ onBack }: { onBack: () => void }) {
                 <span className="p-badge">Connected to Cowork</span>
                 <span className="p-badge">6 agents</span>
               </div>
-              <h1>Certainty Bank</h1>
+              <h1>Kairos</h1>
               <p>
                 One passport, every agent. Plug the bank into any personal agent, and it can pay, borrow and invest
                 within limits you sign, and nothing beyond them.

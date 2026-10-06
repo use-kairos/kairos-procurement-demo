@@ -157,7 +157,7 @@ export const OFFICE_AGENTS: Agent[] = [
           lines: [
             { who: 'us', text: '1 adult, SIN → LAS, out 13 Oct, back 19 Oct, premium economy.' },
             { who: 'them', text: 'Via Tokyo, SGD 2,480 total. Seat 31A held for 15 minutes.' },
-            { who: 'us', text: 'Book it. Paying with a single-use card token from Certainty Bank.' },
+            { who: 'us', text: 'Book it. Paying with a single-use card from Kairos.' },
             { who: 'them', text: 'Confirmed. Booking ref MX7Q2L.' },
           ],
           outcome: 'Booked · ref MX7Q2L',

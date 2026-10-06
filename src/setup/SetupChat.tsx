@@ -133,7 +133,7 @@ export default function SetupChat({ connected, onConnected }: Props) {
             <Assistant>
               <div className="setup-card">
                 <span className="setup-card__label">
-                  <CheckCircle2 size={14} /> Certainty Bank plugin v1.0 installed
+                  <CheckCircle2 size={14} /> Kairos plugin v1.0 installed
                 </span>
                 <Code url={`https://${DOMAIN}/mcp`} passport={connected ? 'psp_ventures_v1_K9d3…' : 'waiting for your key'} />
               </div>
@@ -144,7 +144,7 @@ export default function SetupChat({ connected, onConnected }: Props) {
             <Assistant>
               <div className="setup-card setup-auth">
                 <span className="setup-auth__head">
-                  <ShieldCheck size={16} /> Authorize Certainty Bank
+                  <ShieldCheck size={16} /> Authorize Kairos
                 </span>
                 <ul>
                   {SCOPES.map((s) => (

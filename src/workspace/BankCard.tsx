@@ -1,16 +1,17 @@
 import { useState } from 'react'
-import { ChevronDown, IdCard, ShieldCheck, Zap } from 'lucide-react'
+import { ChevronDown, IdCard, Zap } from 'lucide-react'
 import PassportCard, { PASSPORT } from '../passport/PassportCard'
 import './cards.css'
+import KairosMark from '../brand/KairosMark'
 
 export function CardHead({ title }: { title: string }) {
   return (
     <header className="card-head">
-      <span className="bank-mark">
-        <ShieldCheck size={14} />
+      <span className="bank-mark has-kairos-mark">
+        <KairosMark size={18} />
       </span>
       <span className="card-head__title">{title}</span>
-      <span className="card-head__by">Certainty Bank</span>
+      <span className="card-head__by">Kairos</span>
     </header>
   )
 }

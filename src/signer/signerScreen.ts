@@ -21,7 +21,7 @@ function header(ctx: CanvasRenderingContext2D) {
   ctx.textAlign = 'left'
   ctx.fillStyle = 'rgba(255,255,255,0.6)'
   ctx.font = `600 21px ${UI_FONT}`
-  ctx.fillText('Certainty Bank', 32, 50)
+  ctx.fillText('Kairos', 32, 50)
   ctx.fillStyle = '#4ade80'
   ctx.beginPath()
   ctx.arc(SCREEN_W - 118, 43, 6, 0, Math.PI * 2)
@@ -174,5 +174,5 @@ export function drawSigner(
   ctx.fill()
   centre(ctx, ok ? '✓' : '✕', 276, `700 72px ${UI_FONT}`, '#ffffff')
   centre(ctx, ok ? 'Signed' : 'Rejected', 392, `600 42px ${UI_FONT}`, '#ffffff')
-  centre(ctx, ok ? 'Sent to Certainty Bank' : 'Nothing moved', 438, `400 22px ${UI_FONT}`, 'rgba(255,255,255,0.55)')
+  centre(ctx, ok ? 'Sent to Kairos' : 'Nothing moved', 438, `400 22px ${UI_FONT}`, 'rgba(255,255,255,0.55)')
 }
