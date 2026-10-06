@@ -15,9 +15,14 @@ export type InfoCard = {
   note?: string
 }
 
+// Kairos answers three questions about the other agent before any deal (from the Banking 2035 proposal):
+// who is acting, under what authority, and is the transaction backed by real money?
+export type Verdict = [ok: boolean, note: string]
+
 // A conversation between our agent and another company's agent.
 export type Handshake = {
   counterpart: { id: string; name: string; org: string; verified: boolean }
+  verify: { who: Verdict; authority: Verdict; money: Verdict }
   lines: { who: 'us' | 'them'; text: string }[]
   outcome: string
   tone: Tone

@@ -147,3 +147,58 @@
 .hs__line {
   animation: fade-in 0.3s ease both;
 }
+
+/* Kairos' three questions about the other agent, answered before the conversation. */
+.hs__verify {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.hs__verify li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  font-size: 11.5px;
+  line-height: 1.35;
+}
+
+.hs__verify li + li {
+  border-left: 1px solid var(--line);
+}
+
+.hs__verify-q {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.hs__verify .is-ok .hs__verify-q svg {
+  color: var(--ok);
+}
+
+.hs__verify .is-bad .hs__verify-q svg,
+.hs__verify .is-bad .hs__verify-a {
+  color: var(--warn);
+}
+
+.hs__verify-a {
+  color: var(--ink-3);
+}
+
+@media (max-width: 640px) {
+  .hs__verify {
+    grid-template-columns: 1fr;
+  }
+
+  .hs__verify li + li {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}

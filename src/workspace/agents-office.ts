@@ -36,6 +36,7 @@ export const OFFICE_AGENTS: Agent[] = [
         from: 'agent',
         a2a: {
           counterpart: { id: 'ivy', name: 'Ivy', org: 'Certainty Bank · wealth agent', verified: true },
+          verify: { who: [true, 'Certainty Bank · licensed bank agent'], authority: [true, 'May quote · Wren may not invest alone'], money: [true, 'Paid from the GST reserve, not operating cash'] },
           lines: [
             { who: 'us', text: "We have SGD 15,000 set aside for GST, due in January. What's safe and liquid until then?" },
             { who: 'them', text: '6-month SGS T-bill, backed by the government. Or our money-market fund, same-day withdrawal.' },
@@ -95,6 +96,7 @@ export const OFFICE_AGENTS: Agent[] = [
         from: 'agent',
         a2a: {
           counterpart: { id: 'rafi', name: 'Rafi', org: 'Tax portal · filing agent', verified: true },
+          verify: { who: [true, 'Tax portal · government agent'], authority: [true, 'Pre-checks only · Alex declares'], money: [true, 'SGD 6,120 set aside in the GST reserve'] },
           lines: [
             { who: 'us', text: 'Pre-checking the Q3 GST F5 for Lim Bakery before we submit.' },
             { who: 'them', text: 'Figures match your e-invoices. 3 purchases have no supplier GST number.' },
@@ -154,6 +156,7 @@ export const OFFICE_AGENTS: Agent[] = [
         from: 'agent',
         a2a: {
           counterpart: { id: 'cleo', name: 'Cleo', org: 'Merlion Air · booking agent', verified: true },
+          verify: { who: [true, 'Merlion Air · registered agent'], authority: [true, 'Seller of record for this fare'], money: [true, 'Single-use card ≤ SGD 3,000'] },
           lines: [
             { who: 'us', text: '1 adult, SIN → LAS, out 13 Oct, back 19 Oct, premium economy.' },
             { who: 'them', text: 'Via Tokyo, SGD 2,480 total. Seat 31A held for 15 minutes.' },

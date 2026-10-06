@@ -1,9 +1,15 @@
-import { ArrowLeftRight, ShieldAlert, ShieldCheck } from 'lucide-react'
+import { ArrowLeftRight, Check, ShieldAlert, ShieldCheck, X } from 'lucide-react'
 import Avatar from './Avatar'
 import type { Agent, Handshake } from './agents'
 import './handshake.css'
 
-// Our agent talking to another company's agent; the bank shows whether that agent carries a passport.
+const QUESTIONS = [
+  ['who', 'Who is acting'],
+  ['authority', 'Under what authority'],
+  ['money', 'Backed by real money'],
+] as const
+
+// Our agent talking to another company's agent; Kairos shows whether that agent carries a passport.
 type Props = { agent: Agent; h: Handshake; visibleLines?: number }
 
 export default function HandshakeCard({ agent, h, visibleLines }: Props) {
@@ -30,6 +36,21 @@ export default function HandshakeCard({ agent, h, visibleLines }: Props) {
           {them.verified ? 'Passport verified' : 'No passport'}
         </span>
       </header>
+
+      <ul className="hs__verify" aria-label="Checked by Kairos before any deal">
+        {QUESTIONS.map(([key, label]) => {
+          const [ok, note] = h.verify[key]
+          return (
+            <li key={key} className={ok ? 'is-ok' : 'is-bad'}>
+              <span className="hs__verify-q">
+                {ok ? <Check size={12} /> : <X size={12} />}
+                {label}
+              </span>
+              <span className="hs__verify-a">{note}</span>
+            </li>
+          )
+        })}
+      </ul>
 
       <ol className="hs__lines">
         {h.lines.slice(0, n).map((l, i) => (
