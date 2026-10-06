@@ -1,0 +1,145 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  background: #eeece6;
+  color: var(--ink);
+}
+
+/* Singapore map as the backdrop, toned down to sit behind the desk */
+.intro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/singapore-map.png') center 30% / cover no-repeat;
+  filter: saturate(0.35) contrast(0.95);
+  opacity: 0.6;
+}
+
+.intro canvas {
+  position: relative;
+}
+
+.intro__title {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+}
+
+.intro__title {
+  transition: opacity 0.25s ease;
+}
+
+.intro__title.is-hidden {
+  opacity: 0;
+}
+
+.intro__kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.intro__hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 8px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  color: var(--ink-2);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.intro__skip {
+  position: absolute;
+  right: 28px;
+  bottom: 24px;
+  padding: 8px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.intro__skip:hover {
+  background: #fff;
+}
+
+.intro__fade {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.intro__fade.is-on {
+  opacity: 1;
+}
+
+.chip-tag {
+  padding: 4px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.passport-float {
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  pointer-events: none;
+}
+
+.passport-float.is-visible {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.12s;
+}
+
+.passport-float__caption {
+  margin: 12px auto 0;
+  width: fit-content;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(14, 14, 16, 0.88);
+  text-align: center;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #e4e4e7;
+}
+
+@media (max-width: 720px) {
+  .intro__hint {
+    white-space: normal;
+    width: calc(100% - 32px);
+    text-align: center;
+    border-radius: 12px;
+  }
+}

@@ -1,0 +1,74 @@
+/* The signing key floats above the app, on its own layer */
+.signer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 20, 24, 0.38);
+  backdrop-filter: blur(6px);
+  animation: signer-in 0.3s ease;
+}
+
+.signer.is-leaving {
+  animation: signer-out 0.45s ease forwards;
+}
+
+@keyframes signer-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes signer-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.signer__stage {
+  width: min(560px, 92vw);
+  height: min(600px, 70vh);
+}
+
+.signer__caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: -8px;
+  padding: 12px 18px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-lg);
+}
+
+.signer__title {
+  font-weight: 600;
+}
+
+.signer__keys {
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.signer__keys kbd {
+  margin-right: 4px;
+  padding: 1px 7px;
+  border-radius: 5px;
+  background: #2a2b30;
+  color: #fff;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.signer__keys em {
+  margin-left: 4px;
+  font-style: normal;
+  color: var(--ink-4);
+}
