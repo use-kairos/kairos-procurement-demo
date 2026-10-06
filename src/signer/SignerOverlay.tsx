@@ -9,13 +9,14 @@ import './signer.css'
 
 // Either a request to sign, or just a look at an agent's passport.
 type Props =
-  | { device: Approval['device']; passport?: never; onDecide: (d: Decision) => void; onClose: () => void }
-  | { passport: PassportView; device?: never; onDecide?: never; onClose: () => void }
+  | { device: Approval['device']; passport?: never; autoConfirm?: boolean; onDecide: (d: Decision) => void; onClose: () => void }
+  | { passport: PassportView; device?: never; autoConfirm?: never; onDecide?: never; onClose: () => void }
 
 const DEMO_PIN = '482915'
 const PIN_STEP_MS = 170
 const FACE_MS = 2200
 const FACE_STEPS = 44
+const AUTO_CONFIRM_MS = 1600
 
 // Drops in from above, tilts toward the viewer, and flies away when done.
 function Floating({ leaving, children }: { leaving: boolean; children: React.ReactNode }) {
@@ -34,7 +35,7 @@ function Floating({ leaving, children }: { leaving: boolean; children: React.Rea
   )
 }
 
-export default function SignerOverlay({ device, passport, onDecide, onClose }: Props) {
+export default function SignerOverlay({ device, passport, autoConfirm, onDecide, onClose }: Props) {
   const [phase, setPhase] = useState<Phase>(passport ? 'passport' : 'review')
   const [pin, setPin] = useState(0)
   const [scan, setScan] = useState(0)
@@ -112,6 +113,15 @@ export default function SignerOverlay({ device, passport, onDecide, onClose }: P
     },
     [phase, leaving, onDecide, onClose],
   )
+
+  // Guided demo: the key shows the request, then OK is pressed on its own.
+  const pressRef = useRef(press)
+  pressRef.current = press
+  useEffect(() => {
+    if (!autoConfirm) return
+    const t = window.setTimeout(() => pressRef.current('OK'), AUTO_CONFIRM_MS)
+    return () => clearTimeout(t)
+  }, [autoConfirm])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

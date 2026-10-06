@@ -9,7 +9,7 @@ import type { Decision } from './checks'
 import { liveStatus } from './status'
 import './thread.css'
 
-type Props = { agent: Agent; autoplay?: boolean; checksDone: number; decision?: Decision; bankOpen: boolean; onToggleBank: () => void; onOpenSettings: () => void }
+type Props = { agent: Agent; autoplay?: boolean; onPlayed?: () => void; checksDone: number; decision?: Decision; bankOpen: boolean; onToggleBank: () => void; onOpenSettings: () => void }
 
 function Actions() {
   return (
@@ -56,7 +56,7 @@ type BodyProps = { m: Message; agent: Agent; checksDone: number; decision?: Deci
 function Body({ m, agent, checksDone, decision, lines }: BodyProps) {
   if ('steps' in m) return <Steps {...m.steps} />
   if ('a2a' in m) return <HandshakeCard agent={agent} h={m.a2a} visibleLines={lines} />
-  if ('card' in m) return m.card === 'payment' ? <BankCard checksDone={checksDone} /> : <InfoCard card={settle(m.card, decision)} />
+  if ('card' in m) return m.card === 'payment' ? <BankCard checksDone={checksDone} decision={decision} /> : <InfoCard card={settle(m.card, decision)} />
   return (
     <div className={`bubble${m.from === 'me' ? ' bubble--me' : ''}`}>
       {m.text}
@@ -71,7 +71,7 @@ function Body({ m, agent, checksDone, decision, lines }: BodyProps) {
   )
 }
 
-export default function AgentThread({ agent, autoplay, checksDone, decision, bankOpen, onToggleBank, onOpenSettings }: Props) {
+export default function AgentThread({ agent, autoplay, onPlayed, checksDone, decision, bankOpen, onToggleBank, onOpenSettings }: Props) {
   const live = liveStatus(agent, decision ? { done: 0, running: false, decision } : undefined)
   const working = decision === 'approved' ? 'wrapping up' : decision === 'rejected' ? 'standing down' : agent.working
   const scroll = useRef<HTMLDivElement>(null)
@@ -81,6 +81,13 @@ export default function AgentThread({ agent, autoplay, checksDone, decision, ban
   const total = steps.reduce((a, b) => a + b, 0)
   const [shown, setShown] = useState(autoplay ? 0 : total)
   const playing = shown < total
+
+  // Let the workspace continue the demo once the arrival replay has finished.
+  const wasPlaying = useRef(playing)
+  useEffect(() => {
+    if (wasPlaying.current && !playing && autoplay) onPlayed?.()
+    wasPlaying.current = playing
+  }, [playing, autoplay, onPlayed])
 
   useEffect(() => {
     if (!playing) return

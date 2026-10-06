@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import AgentThread from './AgentThread'
 import BankView from './BankView'
@@ -31,6 +31,13 @@ export default function Workspace() {
   const [policies, setPolicies] = useState<Record<string, Policy>>(DEFAULT_POLICIES)
   const agent = AGENTS.find((a) => a.id === selected)!
   const { runs, log, run, note, signer, openSigner, decide } = useChecks()
+  // Guided path: after Pip's replay, run the checks and let the signing key confirm by itself.
+  const [autoSign, setAutoSign] = useState(false)
+  const continueDemo = useCallback(() => {
+    if (runs[AGENTS[0].id]) return
+    setAutoSign(true)
+    window.setTimeout(() => run(AGENTS[0].id), 800)
+  }, [runs, run])
   // Settings and plugin pages need the full width.
   const chatOnly = company === 'ventures'
   const showBank = bankOpen && view === 'thread' && !chatOnly
@@ -79,6 +86,7 @@ export default function Workspace() {
             key={agent.id}
             agent={agent}
             autoplay={autoplay}
+            onPlayed={continueDemo}
             checksDone={runs[agent.id]?.done ?? 0}
             decision={runs[agent.id]?.decision}
             bankOpen={bankOpen}
@@ -111,8 +119,15 @@ export default function Workspace() {
         <SignerOverlay
           key={signer}
           device={OUTCOMES[signer].approve!.device}
-          onDecide={(d) => decide(signer, d)}
-          onClose={() => openSigner(null)}
+          autoConfirm={autoSign && signer === AGENTS[0].id}
+          onDecide={(d) => {
+            setAutoSign(false)
+            decide(signer, d)
+          }}
+          onClose={() => {
+            setAutoSign(false)
+            openSigner(null)
+          }}
         />
       )}
     </div>

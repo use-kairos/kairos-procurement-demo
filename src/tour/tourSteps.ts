@@ -16,8 +16,8 @@ export const TOUR: TourStep[] = [
   },
   {
     stage: 'Approval',
-    title: 'Run the checks',
-    text: "Click Run checks. Kairos verifies the passport, the owner's key, the mandate and AML. Anything outside a passport stops for Alex's signing key (see Wren or Otto).",
+    title: 'Checks, then the signing key',
+    text: "Kairos runs six checks: registered agent, passport, owner's key, mandate, AML. The payment is then confirmed on Alex's hardware signing key (auto-confirmed in this demo).",
     target: '.bv-checks',
   },
   {

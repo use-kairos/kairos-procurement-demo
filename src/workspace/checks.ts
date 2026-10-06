@@ -43,11 +43,17 @@ export const OUTCOMES: Record<string, Outcome> = {
       ...basics('Pip'),
       pass('SGD 480 ≤ 1,000 · Tan Supplies is a known payee'),
       pass('No sanctions hits · no mule signals'),
-      pass('Single-use card · Tan Supplies only · SGD 480 cap'),
+      { state: 'ask', note: 'Single-use card ready · Alex confirms on the signing key' },
     ],
-    banner: 'Card issued and charged. All 6 checks passed.',
-    log: 'Pip → Tan Supplies · SGD 480 paid · card ··2203 closed',
-    tone: 'ok',
+    banner: 'Card ready. Alex confirms the payment on the signing key.',
+    log: 'Pip · SGD 480 card waiting for Alex',
+    tone: 'ask',
+    approve: {
+      device: { title: 'Sign payment', who: 'Pip · Procurement agent', amount: 'SGD 480.00', detail: 'Tan Supplies · single-use card' },
+      results: [pass('Confirmed on Alex\'s key · card ··2203 · Tan Supplies only · SGD 480 cap')],
+      banner: 'Card issued and charged. All 6 checks passed.',
+      log: 'Pip → Tan Supplies · SGD 480 paid · card ··2203 closed · confirmed by Alex on signing key',
+    },
   },
   tessa: {
     results: [

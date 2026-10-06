@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Check, ChevronDown, CreditCard, IdCard, X } from 'lucide-react'
 import PassportCard, { PASSPORT } from '../passport/PassportCard'
+import type { Decision } from './checks'
 import './cards.css'
 import KairosMark from '../brand/KairosMark'
 
@@ -57,7 +58,7 @@ function CardControls() {
 }
 
 // Inline plugin card: the payment the agent is about to make, with the passport it presents.
-export default function BankCard({ checksDone }: { checksDone: number }) {
+export default function BankCard({ checksDone, decision }: { checksDone: number; decision?: Decision }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -94,11 +95,21 @@ export default function BankCard({ checksDone }: { checksDone: number }) {
         </div>
       )}
 
-      {checksDone === 6 && <CardControls />}
+      {decision === 'approved' && <CardControls />}
 
       <CheckBar
-        passed={checksDone}
-        label={checksDone === 6 ? 'Paid · card closed' : checksDone > 0 ? `Checking ${checksDone} / 6` : 'Ready for Kairos checks'}
+        passed={decision === 'approved' ? 6 : Math.min(checksDone, 5)}
+        label={
+          decision === 'approved'
+            ? 'Paid · card closed'
+            : decision === 'rejected'
+              ? 'Rejected · nothing moved'
+              : checksDone === 6
+                ? "Waiting for Alex's key"
+                : checksDone > 0
+                  ? `Checking ${checksDone} / 6`
+                  : 'Ready for Kairos checks'
+        }
       />
     </section>
   )
